@@ -9,7 +9,7 @@ python3 -m venv .venv
 2. Activar el entorno virtual
 
 ```
-source .venv/bin/activate
+source .venv/Scripts/activate
 ```
 
 3. Instalar los requerimientos 
@@ -26,5 +26,5 @@ cd app-analisis-numerico
 5. Ejecutar el archivo la aplicacion flet
 
 ```
-flet run ./app-analisis-numerico
+flet run ./app-analisis-numerico/
 ```
