@@ -1,91 +1,28 @@
 import flet as ft
-
+from pages.page_unidad_uno import view_unidad_uno
+from pages.page_home import container_controls_home
 
 
 def main(page: ft.Page):
-    page.title = "Routes Example"
+    page.title = "Proyecto analisis numerico"
 
-
-    container_controls = ft.Container(
-                        alignment=ft.alignment.center,
-                        content=ft.ResponsiveRow(
-                            [
-                                ft.Container(
-                                    ft.Text('Unidad 1'),
-                                    bgcolor='#565656',  #ft.colors.BLUE_100,
-                                    border_radius=ft.border_radius.all(15),
-                                    padding=50,
-                                    margin=20,
-                                    alignment=ft.alignment.center,
-                                    ink=True,
-                                    on_click=lambda _: page.go("/unidad_uno"),
-                                    col={"sm": 6, "md": 6, "xl": 4}, #la fila se divide en 12 
-                                ),
-                                ft.Container(
-                                    ft.Text('Unidad 2'),
-                                    bgcolor='#565656',  #ft.colors.BLUE_100,
-                                    border_radius=ft.border_radius.all(15),
-                                    padding=50,
-                                    margin=20,
-                                    alignment=ft.alignment.center,
-                                    ink=True,
-                                    on_click=lambda _: page.go("/unidad_dos"),
-                                    col={"sm": 6, "md": 6, "xl": 4}, #la fila se divide en 12 
-                                ),
-                                ft.Container(
-                                    ft.Text('Unidad 3'),
-                                    bgcolor='#565656',  #ft.colors.BLUE_100,
-                                    border_radius=ft.border_radius.all(15),
-                                    padding=50,
-                                    margin=20,
-                                    alignment=ft.alignment.center,
-                                    ink=True,
-                                    on_click=lambda _: page.go("/unidad_tres"),
-                                    col={"sm": 6, "md": 6, "xl": 4}, #la fila se divide en 12 
-                                ),
-                                ft.Container(
-                                    ft.Text('Unidad 4'),
-                                    bgcolor='#565656',  #ft.colors.BLUE_100,
-                                    border_radius=ft.border_radius.all(15),
-                                    padding=50,
-                                    margin=20,
-                                    alignment=ft.alignment.center,
-                                    ink=True,
-                                    on_click=lambda _: page.go("/unidad_cuatro"),
-                                    col={"sm": 6, "md": 6, "xl": 6}, #la fila se divide en 12 
-                                ),
-                                ft.Container(
-                                    ft.Text('Unidad 5'),
-                                    bgcolor='#565656',  #ft.colors.BLUE_100,
-                                    border_radius=ft.border_radius.all(15),
-                                    padding=50,
-                                    margin=20,
-                                    alignment=ft.alignment.center,
-                                    ink=True,
-                                    on_click=lambda _: page.go("/unidad_cinco"),
-                                    col={"sm": 6, "md": 6, "xl": 6}, #la fila se divide en 12 
-                                ),
-                                
-                            ]
-                        )
-                        
-                    )
-
-    listview = ft.ListView(expand=True, auto_scroll=True )
-    listview.controls.append(container_controls)
+    listview = container_controls_home(page)
+    
+    
     def route_change(e):
         page.views.clear()
         page.views.append(
             ft.View(
                 route="/",
                 controls=[
-                    ft.AppBar(title=ft.Text("Proyecto Analisis Numerico"), bgcolor=ft.colors.SURFACE_VARIANT,),
+                    ft.AppBar(title=ft.Text("Proyecto Analisis Numerico"), bgcolor=ft.colors.BLUE_600, center_title=True,),
                     listview
                 ],
                 vertical_alignment=ft.MainAxisAlignment.CENTER,
                 horizontal_alignment=ft.CrossAxisAlignment.CENTER
             )
         )
+        
         if page.route == "/unidad_uno":
             page.views.append(
                 ft.View(
@@ -93,12 +30,10 @@ def main(page: ft.Page):
                     controls=
                     [
                         ft.AppBar(title=ft.Text("Unidad 1"), bgcolor=ft.colors.SURFACE_VARIANT),
-                        
+                        view_unidad_uno(page)
                         
                         
                     ],
-                    vertical_alignment=ft.MainAxisAlignment.CENTER,
-                    horizontal_alignment=ft.CrossAxisAlignment.CENTER
                 )
             )
         elif page.route == "/unidad_dos":
@@ -158,4 +93,4 @@ def main(page: ft.Page):
     page.go(page.route)
 
 
-ft.app(main)
+ft.app(main, )
