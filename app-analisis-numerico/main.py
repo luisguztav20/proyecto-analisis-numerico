@@ -3,11 +3,11 @@ from pages.page_unidad_uno import view_unidad_uno
 from pages.page_home import container_controls_home
 
 
+
 def main(page: ft.Page):
     page.title = "Proyecto analisis numerico"
 
     listview = container_controls_home(page)
-    
     
     def route_change(e):
         page.views.clear()
@@ -30,8 +30,8 @@ def main(page: ft.Page):
                     controls=
                     [
                         ft.AppBar(title=ft.Text("Unidad 1"), bgcolor=ft.colors.SURFACE_VARIANT),
-                        view_unidad_uno(page)
-                        
+                        view_unidad_uno(page),
+                    
                         
                     ],
                 )
@@ -91,6 +91,7 @@ def main(page: ft.Page):
     page.on_view_pop = view_pop
 
     page.go(page.route)
+    
 
 
-ft.app(main, )
+ft.app(main,)

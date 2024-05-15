@@ -1,10 +1,13 @@
 import  sympy as sp
 import numpy as np
 import matplotlib.pyplot as plt
+import matplotlib
 import random
 from sympy import *
 
 def graficar(f_x, page):
+    plt.close('all')
+    # matplotlib.use('TkCairo')
     x = sp.symbols("x")
     # f_x =x**3-4*x+3
     #sp.E**(-x) -x
@@ -38,8 +41,8 @@ def graficar(f_x, page):
                 del roots[i]
                 if len(roots)==0:
                     i=i+1
-                else:
-                    print("La ecuación no tiene raices")
+    else:
+        print("La ecuación no tiene raices")
 
     #hola=roots.sorted()
     roots.sort()
@@ -102,5 +105,6 @@ def graficar(f_x, page):
             #page.add(MatplotlibChart(fig, expand=True))
             ax.legend()
             plt.show()
+            # plt.close('all')
         else:
             print("La ecuacion no cuenta con raices reales") 
