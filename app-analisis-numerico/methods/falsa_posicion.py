@@ -1,7 +1,7 @@
-import pandas as pd
-import sympy as sp
-from sympy import *
-import flet as ft
+import pandas as pd # type: ignore
+import sympy as sp # type: ignore
+from sympy import * # type: ignore
+import flet as ft # type: ignore
 
 def falsa_posicion(txt_x1, txt_xu, txt_fx, txt_cifras_sig, lbl_resultados, container_resultados, tbl_iteraciones, page):
     

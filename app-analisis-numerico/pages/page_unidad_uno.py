@@ -1,8 +1,11 @@
-import flet as ft
-import sympy as sp
+import flet as ft # type: ignore
+import sympy as sp # type: ignore
 from methods.biseccion import biseccion
 from methods.graficador import graficar
 from methods.falsa_posicion import falsa_posicion
+from methods.Newton_Iterativo import NewtonIterativo
+from methods.Newton_Modificado import NewtonModificado
+
 
 def view_unidad_uno(page):
     
@@ -42,10 +45,26 @@ def view_unidad_uno(page):
             print('PUNTO FIJO')
         elif selection_method == 4:
             print('SECANTE')
+        # NEWTON RAPHSON
         elif selection_method == 5:
-            print('NEWTON RAPHSON')           
+            print('NEWTON RAPHSON')
+            if state_x1 == '' or state_cifras == '' or state_fx == '':
+                print('VACIO')
+                show_alert(event)
+            else:
+                NewtonIterativo(txt_x1, txt_fx, txt_cifras_sig, lbl_resultados, container_resultados, tbl_iteraciones, page)
+                fx = sp.sympify(txt_fx.value)
+                graficar(fx, page)
+        # NEWTON RAPHSON MODIFICADO
         elif selection_method == 6:
             print('NEWTON RAPHSON MODIFICADO')
+            if state_x1 == '' or state_cifras == '' or state_fx == '':
+                print('VACIO')
+                show_alert(event)
+            else:
+                NewtonModificado(txt_x1, txt_fx, txt_cifras_sig, lbl_resultados, container_resultados, tbl_iteraciones, page)
+                fx = sp.sympify(txt_fx.value)
+                graficar(fx, page)
         
     def grafica(event):
         

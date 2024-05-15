@@ -1,5 +1,5 @@
-import flet as ft 
-from flet import Page as page
+import flet as ft  # type: ignore
+from flet import Page as page # type: ignore
 
 def container_controls_home(page):
     container_controls = ft.Container(
