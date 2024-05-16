@@ -71,7 +71,7 @@ def falsa_posicion(txt_x1, txt_xu, txt_fx, txt_cifras_sig, lbl_resultados, conta
         iteracion += 1
         
     
-    lbl_resultados.value = f"La riz de la funcion {fx} = {xr}\nCon error de {Ea}%\nCon {iteracion} iteraciones"
+    lbl_resultados.value = f"La raíz de la funcion {fx} = {xr}\nCon error de {Ea}%\nCon {iteracion} iteraciones"
     container_resultados.visible = True
     
     tbl_iteraciones.columns = headers(df)

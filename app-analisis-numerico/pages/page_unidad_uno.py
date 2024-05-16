@@ -3,9 +3,10 @@ import sympy as sp # type: ignore
 from methods.biseccion import biseccion
 from methods.graficador import graficar
 from methods.falsa_posicion import falsa_posicion
+from methods.Secante import Secante
+
 from methods.Newton_Iterativo import NewtonIterativo
 from methods.Newton_Modificado import NewtonModificado
-
 
 def view_unidad_uno(page):
     
@@ -18,8 +19,7 @@ def view_unidad_uno(page):
             selection_method = int(select_methods.value)
         except:
             show_alert(event)
-  
-            
+        # BISECCION
         if selection_method == 1 :
             print('BISECCION')
             if state_x1 == '' or state_xu == '' or state_cifras == '' or state_fx == '':
@@ -29,7 +29,7 @@ def view_unidad_uno(page):
                 biseccion(txt_x1, txt_xu, txt_fx, txt_cifras_sig, lbl_resultados, container_resultados, tbl_iteraciones, page)
                 fx = sp.sympify(txt_fx.value)
                 graficar(fx, page)
-                
+        # FALSA POSICION        
         elif selection_method == 2:
             print('FALSA POSICION')
             if state_x1 == '' or state_xu == '' or state_cifras == '' or state_fx == '':
@@ -39,12 +39,22 @@ def view_unidad_uno(page):
                 falsa_posicion(txt_x1, txt_xu, txt_fx, txt_cifras_sig, lbl_resultados, container_resultados, tbl_iteraciones, page)
                 fx = sp.sympify(txt_fx.value)
                 graficar(fx, page)
-            
-            
+        # PUNTO FIJO
         elif selection_method == 3:
             print('PUNTO FIJO')
+            #
+            #
+            #
+        # SECANTE
         elif selection_method == 4:
             print('SECANTE')
+            if state_x1 == '' or state_xu == '' or state_cifras == '' or state_fx == '':
+                print('VACIO')
+                show_alert(event)
+            else:
+                Secante(txt_x1, txt_xu, txt_fx, txt_cifras_sig, lbl_resultados, container_resultados, tbl_iteraciones, page)
+                fx = sp.sympify(txt_fx.value)
+                graficar(fx, page)
         # NEWTON RAPHSON
         elif selection_method == 5:
             print('NEWTON RAPHSON')
@@ -82,34 +92,33 @@ def view_unidad_uno(page):
             
     def update_inputs(event): # Activa o desactiva los inputs para los diferentes metodos 
         selection_method = int(select_methods.value)
-          
+        # BISECCION
         if selection_method == 1:
             txt_x1.label = 'Ingrese el valor de x1'
             txt_xu.disabled=False
-            page.update()
-              
-              
+            page.update() 
+        # FALSA POSICION
         elif selection_method == 2:
             txt_x1.label = 'Ingrese el valor de x1'
             txt_xu.disabled = False
             page.update()
-            
+        # PUNTO FIJO
         elif selection_method == 3:
             txt_x1.label = 'Ingrese el valor de x0'
             txt_xu.disable = True
             page.update()
-            
+        # SECANTE
         elif selection_method == 4:
-            txt_xu.disabled=True
-            txt_x1.label = 'Ingrese el valor de x-1'
-            txt_xu.label = 'Ingrese el valor de x0'
+            txt_xu.disabled=False
+            txt_x1.label = 'Ingrese el valor de xi-1'
+            txt_xu.label = 'Ingrese el valor de xi'
             page.update()
-            
+        # NEWTON RAPHSON
         elif selection_method == 5:
             txt_x1.label = 'Ingrese el valor de x0'
             txt_xu.disabled=True
             page.update()
-            
+        # NEWTON RAPHSON MODIFICADO
         elif selection_method == 6:
             txt_x1.label = 'Ingrese el valor de x0'
             txt_xu.disabled=True
